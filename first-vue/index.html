@@ -9,9 +9,22 @@
   </head>
   <body>
     <div id="counter">
-      Counter: {{ counter }}
-
-      <button v-on:click="onClick">ボタン</button>
+      <div>
+        <p>Counter: {{ counter }}</p>
+        <button v-on:click="onClick">ボタン</button>
+      </div>
+      <br />
+      <br />
+      <div>
+        <button v-on:click="onClick2">表示非表示ボタン</button>
+        <p v-if="seen">ヤッホー</p>
+      </div>
+      <br />
+      <br />
+      <div>
+        <button v-on:click="onClick3">ボタン</button>
+        <p v-if="seen">ヤッホー</p>
+      </div>
     </div>
 
     <script>
@@ -19,12 +32,16 @@
         data() {
           return {
             counter: 0,
+            seen: true,
           };
         },
-
-        method: {
+        methods: {
           onClick() {
-            this.counter += 1;
+            this.counter++;
+            console.log(this.counter);
+          },
+          onClick2() {
+            this.seen = !this.seen;
           },
         },
       };
