@@ -11,7 +11,7 @@
     <div id="counter">
       <div>
         <p>Counter: {{ counter }}</p>
-        <button v-on:click="onClick">ボタン</button>
+        <button v-on:click="onClick">カウントアップボタン</button>
       </div>
       <br />
       <br />
@@ -22,8 +22,10 @@
       <br />
       <br />
       <div>
-        <button v-on:click="onClick3">ボタン</button>
-        <p v-if="seen">ヤッホー</p>
+        <!-- <button v-on:click="onClick3">ボタン</button> -->
+        <ul>
+          <li v-for="todo in todos">{{todo.text}}</li>
+        </ul>
       </div>
     </div>
 
@@ -33,16 +35,25 @@
           return {
             counter: 0,
             seen: true,
+            todos: [
+              { text: "Sleep early" },
+              { text: "Learn JavaScript" },
+              { text: "Learn Vue" },
+              { text: "Learn React" },
+              { text: "Learn TypeScript" },
+            ],
           };
         },
         methods: {
           onClick() {
             this.counter++;
-            console.log(this.counter);
           },
           onClick2() {
             this.seen = !this.seen;
           },
+          // onClick3() {
+          //   console.log("hello");
+          // },
         },
       };
 
