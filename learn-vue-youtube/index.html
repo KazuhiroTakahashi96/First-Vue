@@ -25,6 +25,11 @@
       [v-cloak] {
         display: none;
       }
+
+      input {
+        margin: 10px;
+        display: block;
+      }
     </style>
   </head>
 
@@ -55,6 +60,10 @@
       <br />
       <br />
       <div v-if="isVisible" class="box"></div>
+
+      <hr />
+
+      <login-form />
     </div>
 
     <script>
@@ -76,6 +85,30 @@
           },
         },
       });
+
+      app.component("login-form", {
+        template: `
+          <form @submit.prevent='handleSubmit'>
+            <h1>{{ title }}</h1>
+            <input type="email" v-model='email' />
+            <input type="password" v-model='password' />
+            <button>Log in</button>
+          </form>
+        `,
+        data() {
+          return {
+            title: "Login Form",
+            email: "",
+            password: "",
+          };
+        },
+        methods: {
+          handleSubmit() {
+            console.log(this.email, this.password);
+          },
+        },
+      });
+
       app.mount("#app");
     </script>
   </body>
